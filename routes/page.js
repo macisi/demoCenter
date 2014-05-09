@@ -5,19 +5,20 @@
  */
 'use strict';
 var express = require('express');
+var auth = require('../controller/auth');
 var router = express.Router();
-var query = require('../db/query');
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-    query('SELECT * FROM user LIMIT 10', function(err, rows){
-        if (err) {
-            return next(err);
-        }
-        console.log(rows);
-    });
-    res.render('index', { title: 'Express' });
+router.get('/', function(req, res) {
+    res.render('index', { title: 'Demo Center', userinfo: req.session.user});
 });
+
+/* GET login page. */
+router.get('/login', auth.login.get);
+router.get('/logout', auth.logout.get);
+
+/* POST login */
+router.post('/login', auth.login.post);
 
 /* GET users listing. */
 router.get('/users', function(req, res) {

@@ -1,0 +1,15 @@
+extends layout
+block content
+    h1= title
+    form.login-form(action='/login', method='post', enctype='multipart/form-data')
+        div
+            lable 用户名
+            input(name='name')
+        div
+            lable 密码
+            input(name='password')
+        div
+            label 上传测试
+            input(name='somefile', type='file')
+        button#btn(type='submit') 登录
+

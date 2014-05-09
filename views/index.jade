@@ -2,4 +2,8 @@ extends layout
 
 block content
   h1= title
-  p Welcome to #{title}
+  if userinfo
+    p hello #{userinfo.name}|#{userinfo.email}
+        a(href='/logout') 登出
+  else
+    a(href='/login') 登录

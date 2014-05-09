@@ -9,6 +9,7 @@ var expressValidator = require('express-validator');
 //var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
+var session = require('express-session');
 var bodyParser = require('body-parser');
 
 var pageRouter = require('./routes/page');
@@ -25,6 +26,14 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(cookieParser());
+app.use(session({
+    secret: 'what is the date today',
+    key: 'sid',
+    cookie: {
+        maxAge: null //session cookie
+//        sucure: true
+    }
+}));
 app.use(expressValidator());
 app.use(require('less-middleware')(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));

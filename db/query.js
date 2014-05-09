@@ -30,10 +30,11 @@ module.exports = function(sql, params, callback){
                 console.log(err);
             }
         } else {
-            connection.query(sql, params, function(){
+            var q = connection.query(sql, params, function(){
                 callback.apply(connection, arguments);
                 connection.release();
             });
+            console.log(q.sql);
         }
     }
 

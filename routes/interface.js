@@ -9,6 +9,7 @@ var router = express.Router();
 
 var user = require('../api/user');
 var group = require('../api/group');
+var demo = require('../api/demo');
 
 //user api
 router.route('/user/:user_id?')
@@ -23,5 +24,12 @@ router.route('/group/:group_id?')
     .put(group.put)
     .post(group.post)
     .delete(group.delete);
+
+//demo api
+router.route('/demo/:demo_id?')
+    .get(demo.get)
+//    .put(demo.put)
+    .post(demo.post)
+    .delete(demo.delete);
 
 module.exports = router;

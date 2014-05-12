@@ -6,8 +6,6 @@
 var crypto = require('crypto');
 var mysql = require('mysql');
 var query = require('../db/query');
-var formidable = require('formidable');
-var util = require('util');
 
 var auth = {
     login: {
@@ -15,27 +13,6 @@ var auth = {
             res.render('login', { title: 'login'});
         },
         post: function(req, res){
-            var form = new formidable.IncomingForm();
-            form.uploadDir = './uploadfile';
-            form.keepExtensions = true;
-
-            form.on('progress', function(bytesReceived, bytesExpected) {
-                console.log(bytesReceived, bytesExpected);
-            });
-
-            form.parse(req, function(err, fields, files) {
-                res.writeHead(200, {'content-type': 'text/plain'});
-                res.write('received upload:\n\n');
-                res.end(util.inspect({fields: fields, files: files}));
-            });
-            return;
-
-
-
-
-
-
-
             var password;
             if (req.body.name && req.body.password) {
                 password = crypto.createHash('md5').update(req.body.password).digest('hex');

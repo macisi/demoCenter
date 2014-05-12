@@ -44,7 +44,7 @@ var group = {
         } else {
             var group = {
                 group_name: user.group_name,
-                group_desc: user.group_name,
+                group_desc: user.group_desc,
                 creater_id: 1,
                 createtime: new Date()
             };

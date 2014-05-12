@@ -17,6 +17,11 @@ router.get('/', function(req, res) {
 router.get('/login', auth.login.get);
 router.get('/logout', auth.logout.get);
 
+/* GET demo create page */
+router.get('/demo/new', function(req, res){
+    res.render('demoform');
+});
+
 /* POST login */
 router.post('/login', auth.login.post);
 
